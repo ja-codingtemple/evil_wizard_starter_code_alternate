@@ -39,14 +39,14 @@ class Character:
         if not hasattr(opponent, 'evadeNextAttack'):
             opponent.health -= damage
             print(f"\n{self.name} attacks {opponent.name} for {damage} damage!")
-        # Else, if they do have an 'evadeNextAttack' attribute and the value is 0, proceed with the attack.
-        elif hasattr(opponent, 'evadeNextAttack') and opponent.evadeNextAttack == 0:
+        # Else, if they do have an 'evadeNextAttack' attribute and the value is False, proceed with the attack.
+        elif hasattr(opponent, 'evadeNextAttack') and opponent.evadeNextAttack == False:
             opponent.health -= damage
             print(f"\n{self.name} attacks {opponent.name} for {damage} damage!")
-        # Else, if they do have an 'evadeNextAttack' attribute and the value is 1, decrement the value and display that the attack was evaded.
-        elif hasattr(opponent, 'evadeNextAttack') and opponent.evadeNextAttack == 1:
+        # Else, if they do have an 'evadeNextAttack' attribute and the value is True, set the value False and display that the attack was evaded.
+        elif hasattr(opponent, 'evadeNextAttack') and opponent.evadeNextAttack == True:
             print(f"\n{self.name} attacks {opponent.name}, but {opponent.name} evades the attack!")
-            opponent.evadeNextAttack = 0
+            opponent.evadeNextAttack = False
 
     def display_stats(self):
         print(f"{self.name}'s Stats - Health: {self.health}/{self.max_health}, Attack Power: {self.attack_power}")
@@ -79,7 +79,7 @@ class EvilWizard(Character):
 class Rogue(Character):
     def __init__(self, name):
         super().__init__(name, 120, 30)
-        self.evadeNextAttack = 0
+        self.evadeNextAttack = False
         
     def special_ability(self, opponent):
         print("\nAbilities:")
@@ -111,5 +111,5 @@ class Rogue(Character):
             Ability: Preemptive Dodge
             Dodge the next attack.
             '''
-            self.evadeNextAttack = 1
+            self.evadeNextAttack = True
             print(f"\n{self.name} uses Preemptive Dodge. He will evade the next attack!") 
