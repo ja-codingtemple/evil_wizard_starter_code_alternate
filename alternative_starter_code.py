@@ -1,8 +1,4 @@
-# This imports all the classes we created from a file called 'classes.py'. The * symbol means all. 'from' should reference the file that the classes are stored in.
 from classes import *
-
-# This is just an example of how to import your own custom-functions from a separate file. You can delete this if you want.
-from customfunctions import helloWorld 
 
 # ======================= CREATE CHARACTER FUNCTION =========================
 '''
@@ -12,10 +8,10 @@ def create_character():
     print("Choose your character class:")
     print("1. Warrior")
     print("2. Mage")
-    print("3. Archer")  # Add Archer
-    print("4. Paladin")  # Add Paladin
+    print("3. Archer") 
+    print("4. Paladin")
     print("5. Rogue")
-    
+
     class_choice = input("Enter the number of your class choice: ")
     name = input("Enter your character's name: ")
 
@@ -24,11 +20,9 @@ def create_character():
     elif class_choice == '2':
         return Mage(name)
     elif class_choice == '3':
-        # Add Archer class here
-        pass
+        pass  # Implement a class of your choice.
     elif class_choice == '4':
-        # Add Paladin class here
-        pass
+        pass  # Implement another class of your choice.
     elif class_choice == '5':
         return Rogue(name)
     else:
@@ -47,7 +41,7 @@ def battle(player, wizard):
         print("2. Use Special Ability")
         print("3. Heal")
         print("4. View Stats")
-        
+
         choice = input("Choose an action: ")
 
         if choice == '1':
@@ -55,15 +49,12 @@ def battle(player, wizard):
         elif choice == '2':
             player.special_ability(wizard)
         elif choice == '3':
-            # Call the heal method here
-            pass  # Implement this
+            pass  # Implement heal method
         elif choice == '4':
             player.display_stats()
         else:
-            print("Invalid choice, try again.")
-            continue
+            print("Invalid choice. Try again.")
 
-        # Evil Wizard's turn to attack and regenerate
         if wizard.health > 0:
             wizard.regenerate()
             wizard.attack(player)
@@ -80,16 +71,8 @@ def battle(player, wizard):
 Handles the flow of the game.
 '''
 def main():
-    # This is just an example of how to import a functiom from a separate file and call it. You can delete this.
-    helloWorld() 
-    
-    # Character creation phase
     player = create_character()
-
-    # Evil Wizard is created
     wizard = EvilWizard("The Dark Wizard")
-
-    # Start the battle
     battle(player, wizard)
 
 if __name__ == "__main__":
